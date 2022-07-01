@@ -85,7 +85,7 @@ spec:
         node-type: relay
       containers:
       - name: relay
-        image: nessusio/cardano-node:dev
+        image: synlay/cardano-node:dev
         imagePullPolicy: Always
         ports:
           - containerPort: 3001
@@ -176,7 +176,7 @@ spec:
         node-type: block-producer
       containers:
       - name: bprod
-        image: nessusio/cardano-node:dev
+        image: synlay/cardano-node:dev
         imagePullPolicy: Always
         ports:
           - containerPort: 3001

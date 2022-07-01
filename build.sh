@@ -15,7 +15,7 @@ function buildCardanoNodeArm64 () {
 
   if [[ ! -d ${dockerBuildOut} ]]; then
 
-    AUX_IMAGE_NAME="nessusio/cardano-aux:${AUX_IMAGE_VERSION}"
+    AUX_IMAGE_NAME="synlay/cardano-aux:${AUX_IMAGE_VERSION}"
 
     docker build \
       --build-arg CARDANO_VER="${CARDANO_VER}" \
@@ -54,7 +54,7 @@ function buildCncliArm64 () {
 
   if [[ ! -d ${dockerBuildOut} ]]; then
 
-    AUX_IMAGE_NAME="nessusio/cncli-aux:${AUX_IMAGE_VERSION}"
+    AUX_IMAGE_NAME="synlay/cncli-aux:${AUX_IMAGE_VERSION}"
 
     docker build \
       --build-arg CNCLI_VER="${CNCLI_VER}" \
@@ -89,7 +89,7 @@ function buildCncliArm64 () {
 function buildBaseImage () {
 
   AUX_IMAGE_VERSION="${DEBIAN_VER}-${ARCH_SUFFIX}"
-  AUX_IMAGE_NAME="nessusio/debian:${AUX_IMAGE_VERSION}"
+  AUX_IMAGE_NAME="synlay/debian:${AUX_IMAGE_VERSION}"
 
   dockerSaveDir="./nix/docker/baseImage/target"
   dockerSaveFile="${dockerSaveDir}/nessusio-debian-${AUX_IMAGE_VERSION}.tgz"
@@ -150,7 +150,7 @@ function buildImage () {
   FULL_ARCH_VERSION="${FULL_VERSION}-${ARCH_SUFFIX}"
   LATEST_ARCH_VERSION="${LATEST_VERSION}-${ARCH_SUFFIX}"
 
-  IMAGE_NAME="nessusio/${shortName}"
+  IMAGE_NAME="synlay/${shortName}"
   FULL_IMAGE_NAME="${IMAGE_NAME}:${FULL_ARCH_VERSION}"
 
   echo "##########################################################"

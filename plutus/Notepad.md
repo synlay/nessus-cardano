@@ -120,7 +120,7 @@ docker run --detach \
 docker logs -f testrl
 ```
 
-## Using nessusio/cardano-node
+## Using synlay/cardano-node
 
 ```
 docker run --detach \
@@ -129,7 +129,7 @@ docker run --detach \
     -e CARDANO_NETWORK=testnet \
     -v test-data:/opt/cardano/data \
     -v node-ipc:/opt/cardano/ipc \
-    nessusio/cardano-node:${CARDANO_NODE_VERSION:-dev} run
+    synlay/cardano-node:${CARDANO_NODE_VERSION:-dev} run
 
 docker logs -f testrl
 
@@ -148,7 +148,7 @@ docker exec -it testrl gLiveView
 alias cardano-cli="docker run -it --rm \
   -v ~/cardano:/var/cardano/local \
   -v node-ipc:/opt/cardano/ipc \
-  nessusio/cardano-node:${CARDANO_NODE_VERSION:-dev} cardano-cli"
+  synlay/cardano-node:${CARDANO_NODE_VERSION:-dev} cardano-cli"
 
 TESTNET_MAGIC=$(docker exec testrl cat /opt/cardano/data/protocolMagicId) \
   && echo "TESTNET_MAGIC=$TESTNET_MAGIC"
@@ -453,7 +453,7 @@ docker run --detach \
     -v testnet-relay-config:/var/cardano/config  \
     -v test-data:/opt/cardano/data \
     -v node-ipc:/opt/cardano/ipc \
-    nessusio/cardano-node:${CARDANO_NODE_VERSION:-latest} run
+    synlay/cardano-node:${CARDANO_NODE_VERSION:-latest} run
 
 docker logs -n=200 -f testrl
 
@@ -535,7 +535,7 @@ docker run --detach \
     -v testnet-bprod-config:/var/cardano/config  \
     -v /mnt/disks/data00/testdat:/opt/cardano/data \
     -v node-ipc:/opt/cardano/ipc \
-    nessusio/cardano-node:${CARDANO_NODE_VERSION:-latest} run
+    synlay/cardano-node:${CARDANO_NODE_VERSION:-latest} run
 
 docker logs -n=200 -f testbp
 

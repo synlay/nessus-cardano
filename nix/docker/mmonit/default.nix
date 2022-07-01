@@ -17,7 +17,7 @@
 
 let
 
-  imageName = "nessusio/mmonit";
+  imageName = "synlay/mmonit";
 
   # Map the Nix platform identifier to the Docker one
   imageArch = if builtins.currentSystem == "x86_64-linux" then "amd64"

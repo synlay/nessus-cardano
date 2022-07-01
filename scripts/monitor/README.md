@@ -1,7 +1,7 @@
 ## Build the Stake Pool Monitor
 
 ```
-docker build -t nessusio/cardano-pool-monitor ./context
+docker build -t synlay/cardano-pool-monitor ./context
 ```
 
 ## Run the Stake Pool Monitor
@@ -26,7 +26,7 @@ docker run --detach \
   -e MONITOR_MAX_MARGIN_INCREASE=0.0 \
   -e MONITOR_ENDLESS=true \
   -e MONITOR_SLEEP=2000 \
-  nessusio/cardano-pool-monitor
+  synlay/cardano-pool-monitor
 
 docker logs -n 200 -f monitor
 ```

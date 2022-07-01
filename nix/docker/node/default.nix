@@ -33,7 +33,7 @@
 
 let
 
-  imageName = "nessusio/cardano-node";
+  imageName = "synlay/cardano-node";
 
   # curl -o "./nix/docker/node/context/config/mainnet-config.json" "https://hydra.iohk.io/build/${hydraBuild}/download/1/mainnet-config.json"
   # curl -o "./nix/docker/node/context/config/testnet-config.json" "https://hydra.iohk.io/build/${hydraBuild}/download/1/testnet-config.json"

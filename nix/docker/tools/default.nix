@@ -26,7 +26,7 @@
 
 let
 
-  imageName = "nessusio/cardano-tools";
+  imageName = "synlay/cardano-tools";
 
   cncliScript = pkgs.writeShellScriptBin "run-cncli" ''
 

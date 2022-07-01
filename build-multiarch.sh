@@ -4,7 +4,7 @@ source ./build-common.sh
 
 function buildManifest() {
 
-  IMAGE_NAME="nessusio/$1"
+  IMAGE_NAME="synlay/$1"
   IMAGE_TAG="$2"
 
   echo "docker manifest rm ${IMAGE_NAME}:${IMAGE_TAG}"

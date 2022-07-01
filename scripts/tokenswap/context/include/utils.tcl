@@ -185,7 +185,7 @@ proc cardano-cli {arglst {show true}} {
     lappend cmd docker run -it --rm
     lappend cmd -v "$CARDANO_DIR:/var/cardano/local"
     lappend cmd -v "node-ipc:/opt/cardano/ipc"
-    lappend cmd nessusio/cardano-node cardano-cli
+    lappend cmd synlay/cardano-node cardano-cli
   }
   if {$show} {
     set cmdout "cardano-cli"

@@ -29,7 +29,7 @@ NETWORK="${BLOCKFROST_NETWORK:-mainnet}" \
 && cd ~/git/nessus-cardano \
 && rm -rf ./scripts/tokenswap/context/common \
 && cp -r ./scripts/common ./scripts/tokenswap/context \
-&& docker build -t nessusio/tokenswap ./scripts/tokenswap/context \
+&& docker build -t synlay/tokenswap ./scripts/tokenswap/context \
 && docker rm -f tokenswap \
 && docker run --detach  \
   --name tokenswap \
@@ -41,7 +41,7 @@ NETWORK="${BLOCKFROST_NETWORK:-mainnet}" \
   -e PROXY_FROM_SKEY="${NETWORK}/keys/acc3/payment.skey" \
   -v tokenswap:/var/cardano/local \
   -v node-ipc:/opt/cardano/ipc \
-  nessusio/tokenswap --proxy run --intrv 3600 --endless true
+  synlay/tokenswap --proxy run --intrv 3600 --endless true
 
 docker logs -f tokenswap
 ```

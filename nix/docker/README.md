@@ -35,7 +35,7 @@ EOF
 # Bash into the node to look around
 docker run --rm -it --entrypoint=bash \
   -v node-data:/opt/cardano/data \
-  nessusio/cardano-node:${CARDANO_NODE_VERSION:-dev}
+  synlay/cardano-node:${CARDANO_NODE_VERSION:-dev}
 
 cardano-node run \
   --config /opt/cardano/config/mainnet-config.json \
@@ -55,7 +55,7 @@ docker run --detach \
     -p 3001:3001 \
     -v node-data:/opt/cardano/data \
     -v node-ipc:/opt/cardano/ipc \
-    nessusio/cardano-node:${CARDANO_NODE_VERSION:-dev} run
+    synlay/cardano-node:${CARDANO_NODE_VERSION:-dev} run
 
 docker logs -n 100 -f relay
 
@@ -81,7 +81,7 @@ docker exec relay cat /var/cardano/config/mainnet-topology.json
 alias cardano-cli="docker run -it --rm \
   -v ~/cardano:/var/cardano/local \
   -v node-ipc:/opt/cardano/ipc \
-  nessusio/cardano-node:${CARDANO_NODE_VERSION:-dev} cardano-cli"
+  synlay/cardano-node:${CARDANO_NODE_VERSION:-dev} cardano-cli"
 
 cardano-cli query tip --mainnet
 {
@@ -224,7 +224,7 @@ docker run --detach \
   -p 8080:8080 \
   --restart=always \
   -v ~/mmonit/conf/license.xml:${LICENSE} \
-  nessusio/mmonit -i
+  synlay/mmonit -i
 
 docker logs -f mmonit
 
