@@ -8,7 +8,7 @@ ARG CABAL_VER
 ARG GHC_VER
 ARG ARCH
 
-## Install dependencies and libsodium #################################################################################
+## Install dependencies, secp256k1 and libsodium #################################################################################
 
 FROM debian:10-slim as builderA
 
@@ -20,6 +20,17 @@ RUN apt-get update \
     autoconf automake build-essential g++ git jq \
     libffi-dev libgmp-dev libncursesw5 libnuma-dev libssl-dev libsystemd-dev libtinfo-dev libtool llvm \
     make pkg-config tmux wget zlib1g-dev
+
+# Install secp256k1
+WORKDIR /src
+RUN git clone https://github.com/bitcoin-core/secp256k1.git
+WORKDIR secp256k1
+RUN git reset --hard ac83be33d0956faf6b7f61a60ab524ef7d6a473a
+RUN ./autogen.sh \
+  && ./configure --prefix=/usr --enable-module-schnorrsig --enable-experimental \
+  && make \
+  && make check \
+  && make install
 
 # Install Libsodium
 
@@ -116,5 +127,10 @@ FROM builderA
 COPY --from=builderC /usr/local/bin/cardano-node /usr/local/bin/
 COPY --from=builderC /usr/local/bin/cardano-cli /usr/local/bin/
 COPY --from=builderC /usr/local/bin/cardano-submit-api /usr/local/bin/
+# COPY --from=builderA /usr/lib/libsecp256k1.so.0 /usr/local/bin/
+
+# Install secp256k1
+WORKDIR /src/secp256k1
+RUN make install
 
 WORKDIR /
