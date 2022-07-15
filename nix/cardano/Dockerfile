@@ -127,10 +127,10 @@ FROM builderA
 COPY --from=builderC /usr/local/bin/cardano-node /usr/local/bin/
 COPY --from=builderC /usr/local/bin/cardano-cli /usr/local/bin/
 COPY --from=builderC /usr/local/bin/cardano-submit-api /usr/local/bin/
-# COPY --from=builderA /usr/lib/libsecp256k1.so.0 /usr/local/bin/
+COPY --from=builderA /usr/lib/libsecp* /usr/lib/
 
 # Install secp256k1
-WORKDIR /src/secp256k1
-RUN make install
+# WORKDIR /src/secp256k1
+# RUN make install
 
 WORKDIR /
