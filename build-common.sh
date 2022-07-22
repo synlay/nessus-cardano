@@ -20,8 +20,8 @@ GLVIEW_VER="1.26.3"
 # https://github.com/AndrewWestberg/cncli
 CNCLI_VER="4.0.4"
 
-CABAL_VER="3.4.0.0"
-GHC_VER="8.10.4"
+CABAL_VER="3.6.2.0"
+GHC_VER="8.10.7"
 
 ARCH=`uname -m`
 

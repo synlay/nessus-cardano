@@ -238,7 +238,7 @@ Debian 10 (Buster)
 ```
 # Install system dependencies
 sudo apt-get update
-sudo apt-get install -y \
+sudo apt-get install -y --no-install-recommends \
   autoconf \
   automake \
   build-essential \

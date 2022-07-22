@@ -29,6 +29,7 @@
   cardano ? import ../../cardano { inherit cardanoVersion cardanoRev cabalVersion ghcVersion; },
   gLiveView ? import ../../gLiveView { inherit glvVersion; },
   libsodium ? import ../../libsodium {},
+  secp256k1 ? import ../../secp256k1 {},
 }:
 
 let
@@ -79,6 +80,7 @@ in
       pkgs.socat             # Utility for bidirectional data transfer
       pkgs.utillinux         # System utilities for Linux
       libsodium              # Cardano crypto library fork
+      secp256k1              # Optimized C library for ECDSA signatures and secret/public key operations on curve secp256k1
 
       # Packages needed on RaspberryPi
       pkgs.numactl           # Tools for non-uniform memory access

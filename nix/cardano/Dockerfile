@@ -16,8 +16,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
 RUN apt-get update \
-  && apt-get install -y \
-    autoconf automake build-essential g++ git jq \
+  && apt-get install -y --no-install-recommends \
+    autoconf automake build-essential g++ git ca-certificates jq \
     libffi-dev libgmp-dev libncursesw5 libnuma-dev libssl-dev libsystemd-dev libtinfo-dev libtool llvm \
     make pkg-config tmux wget zlib1g-dev
 
@@ -127,10 +127,5 @@ FROM builderA
 COPY --from=builderC /usr/local/bin/cardano-node /usr/local/bin/
 COPY --from=builderC /usr/local/bin/cardano-cli /usr/local/bin/
 COPY --from=builderC /usr/local/bin/cardano-submit-api /usr/local/bin/
-COPY --from=builderA /usr/lib/libsecp* /usr/lib/
-
-# Install secp256k1
-# WORKDIR /src/secp256k1
-# RUN make install
 
 WORKDIR /

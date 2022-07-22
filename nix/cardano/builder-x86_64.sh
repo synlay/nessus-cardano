@@ -31,11 +31,20 @@ echo "# GHC:     ${ghcVersion}"
 echo ""
 
 export LD_LIBRARY_PATH="${libsodium}/lib"
+export SECP2561K1_LIBRARY_PATH="${secp256k1}/lib"
 export PKG_CONFIG_PATH="${libsodium}/lib/pkgconfig"
 
 echo "Checking libsodium ..."
 if [[ "$LD_LIBRARY_PATH" != *"libsodium"* ]]; then
   echo "[Error] Cannot find libsodium in $LD_LIBRARY_PATH"
+  exit 1
+else
+  echo "OK"
+fi
+
+echo "Checking secp256k1 ..."
+if [[ "$SECP2561K1_LIBRARY_PATH" != *"secp256k1"* ]]; then
+  echo "[Error] Cannot find secp256k1 in $SECP2561K1_LIBRARY_PATH"
   exit 1
 else
   echo "OK"

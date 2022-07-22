@@ -12,7 +12,8 @@
   cabalVersion,
   ghcVersion,
 
-  libsodium ? import ../libsodium {}
+  libsodium ? import ../libsodium {},
+  secp256k1 ? import ../secp256k1 {}
 }:
 
 let
@@ -44,9 +45,10 @@ in
         pkgs.systemd
         pkgs.zlib
         libsodium
+        secp256k1
       ];
 
-      inherit cardanoVersion cardanoRev libsodium;
+      inherit cardanoVersion cardanoRev libsodium secp256k1;
       inherit cabalVersion ghcVersion;
 
       builder = ./builder-x86_64.sh;
@@ -68,9 +70,10 @@ in
         pkgs.systemd
         pkgs.zlib
         libsodium
+        secp256k1
       ];
 
-      inherit cardanoVersion cardanoRev libsodium;
+      inherit cardanoVersion cardanoRev libsodium secp256k1;
 
       builder = ./builder-aarch64.sh;
     }
