@@ -159,7 +159,7 @@ https://docs.docker.com/engine/install/debian
 https://withblue.ink/2020/06/24/docker-and-docker-compose-on-raspberry-pi-os.html
 
 ```
-sudo apt-get install -y --no-install-recommends apt-transport-https ca-certificates gnupg-agent software-properties-common \
+sudo apt-get install -y apt-transport-https ca-certificates gnupg-agent software-properties-common \
   && curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - \
   && sudo add-apt-repository \
    "deb https://download.docker.com/linux/debian \
@@ -167,7 +167,7 @@ sudo apt-get install -y --no-install-recommends apt-transport-https ca-certifica
    stable"
 
 sudo apt-get update \
-  && sudo apt-get install -y --no-install-recommends docker-ce docker-ce-cli containerd.io \
+  && sudo apt-get install -y docker-ce docker-ce-cli containerd.io \
   && sudo systemctl status docker
 
 sudo usermod -aG docker $USER
