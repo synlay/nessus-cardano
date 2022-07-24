@@ -210,27 +210,6 @@ EOF
 
 ```
 
-## Run M/Monit
-
-Login: admin/swordfish
-
-```
-CONFDIR="/usr/local/var/mmonit/conf"
-LICENSE="${CONFDIR}/license.xml"
-
-docker rm -f mmonit
-docker run --detach \
-  --name=mmonit \
-  -p 8080:8080 \
-  --restart=always \
-  -v ~/mmonit/conf/license.xml:${LICENSE} \
-  synlay/mmonit -i
-
-docker logs -f mmonit
-
-docker exec -it mmonit cat ${LICENSE}
-```
-
 ## Bare Metal Build
 
 Debian 10 (Buster)

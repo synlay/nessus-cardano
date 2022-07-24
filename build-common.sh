@@ -5,10 +5,6 @@
 CARDANO_VER="1.35.0"
 CARDANO_REV="-dev"
 
-# https://mmonit.com/download
-MMONIT_VER="3.7.7"
-MMONIT_REV="-rev4"
-
 # https://github.com/tstack/lnav
 DEBIAN_VER="10"
 LNAV_VER="0.10.1"

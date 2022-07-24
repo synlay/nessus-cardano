@@ -41,17 +41,13 @@ function buildImage () {
     VERSION_MAJOR=${CARDANO_VER}
     VERSION_REV=${CARDANO_REV}
 
-  elif [[ $shortName == "mmonit" ]]; then
-    VERSION_MAJOR=${MMONIT_VER}
-    VERSION_REV=${MMONIT_REV}
-
   elif [[ $shortName == "monit" ]]; then
     VERSION_MAJOR=${MONIT_VER}
     VERSION_REV=${MONIT_REV}
 
   else
       echo "[Error] Illegal argument: $1"
-      echo "Usage: $0 [all|cardano-node|cardano-tools|mmonit|monit] [push]"
+      echo "Usage: $0 [all|cardano-node|cardano-tools|monit] [push]"
       exit 1
   fi
 
@@ -91,7 +87,6 @@ push=$2
 if [[ $shortName == "all" ]]; then
   buildImage "cardano-node"
   buildImage "cardano-tools"
-  buildImage "mmonit"
   buildImage "monit"
 
 elif [[ $shortName == "cardano" ]]; then
