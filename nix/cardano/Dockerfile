@@ -71,11 +71,11 @@ ARG CABAL_TAG="${CABAL_VER}"
 
 WORKDIR /src
 RUN if [ "${ARCH}" = "aarch64" ]; then \
-  wget -q https://downloads.haskell.org/~cabal/cabal-install-${CABAL_TAG}/cabal-install-${CABAL_VER}-aarch64-ubuntu-18.04.tar.xz \
-  && tar -xf cabal-install-${CABAL_VER}-aarch64-ubuntu-18.04.tar.xz; \
+  wget -q https://downloads.haskell.org/~cabal/cabal-install-${CABAL_TAG}/cabal-install-${CABAL_VER}-aarch64-linux-deb10.tar.xz \
+  && tar -xf cabal-install-${CABAL_VER}-aarch64-linux-deb10.tar.xz; \
 elif [ "${ARCH}" = "x86_64" ]; then \
-  wget -q https://downloads.haskell.org/~cabal/cabal-install-${CABAL_TAG}/cabal-install-${CABAL_VER}-x86_64-ubuntu-16.04.tar.xz \
-  && tar -xf cabal-install-${CABAL_VER}-x86_64-ubuntu-16.04.tar.xz; \
+  wget -q https://downloads.haskell.org/~cabal/cabal-install-${CABAL_TAG}/cabal-install-${CABAL_VER}-x86_64-linux-alpine-static.tar.xz \
+  && tar -xf cabal-install-${CABAL_VER}-x86_64-linux-alpine-static.tar.xz; \
 fi
 
 RUN mv cabal /usr/local/bin/
