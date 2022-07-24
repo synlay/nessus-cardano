@@ -9,7 +9,7 @@ ARG ARCH
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends curl git ca-certificates
+  && apt-get install -y  curl git ca-certificates
 
 #Install cncli
 RUN mkdir -p $HOME/.cargo/bin
@@ -24,7 +24,7 @@ RUN rustup update
 RUN rustup component add clippy rustfmt
 RUN echo 'source $HOME/.cargo/env' >> $HOME/.bashrc
 
-RUN apt-get install -y --no-install-recommends autoconf automake build-essential g++ \
+RUN apt-get install -y  autoconf automake build-essential g++ \
   libffi-dev libgmp-dev libncursesw5 libssl-dev libsystemd-dev libtinfo-dev libtool \
   make pkg-config tmux zlib1g-dev
 
