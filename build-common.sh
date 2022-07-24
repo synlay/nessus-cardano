@@ -9,12 +9,12 @@ CARDANO_REV="-dev"
 DEBIAN_VER="10"
 LNAV_VER="0.10.1"
 
-# https://github.com/cardano-community/guild-operators/blob/alpha/scripts/cnode-helper-scripts/gLiveView.sh#L59
+# https://github.com/cardano-community/guild-operators/blob/alpha/scripts/cnode-helper-scripts/gLiveView.sh#L60
 # Also change change in nix/gLiveView/default.nix
-GLVIEW_VER="1.26.3"
+GLVIEW_VER="1.27.0"
 
-# https://github.com/AndrewWestberg/cncli
-CNCLI_VER="4.0.4"
+# https://github.com/cardano-community/cncli
+CNCLI_VER="5.0.5"
 
 CABAL_VER="3.6.2.0"
 GHC_VER="8.10.7"

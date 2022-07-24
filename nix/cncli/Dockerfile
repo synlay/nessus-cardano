@@ -28,7 +28,7 @@ RUN apt-get install -y  autoconf automake build-essential g++ \
   libffi-dev libgmp-dev libncursesw5 libssl-dev libsystemd-dev libtinfo-dev libtool \
   make pkg-config tmux zlib1g-dev
 
-RUN git clone --recurse-submodules https://github.com/AndrewWestberg/cncli \
+RUN git clone --recurse-submodules https://github.com/cardano-community/cncli \
     && cd cncli && git checkout v${CNCLI_VER} \
     && cargo install --path . --force \
     && cp /root/.cargo/bin/cncli /usr/local/bin/

@@ -205,7 +205,7 @@ This important functionality has also been built into the [synlay/cardano-tools]
 
 First, lets define an alias and ping the node that we want to work with.
 
-Details about this API are [here](https://github.com/AndrewWestberg/cncli/blob/develop/USAGE.md).
+Details about this API are [here](https://github.com/cardano-community/cncli/blob/develop/USAGE.md).
 
 ```
 $ alias cncli="docker run -it --rm \

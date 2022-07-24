@@ -38,7 +38,7 @@ docker logs -f relay
 Accessing the cncli through Docker can also be a little convoluted.
 We again define an alias for it.
 
-The details about this API are [here](https://github.com/AndrewWestberg/cncli/blob/develop/README.md#running).
+The details about this API are [here](https://github.com/cardano-community/cncli/blob/develop/README.md#running).
 
 ```
 alias cncli="docker run -it --rm \

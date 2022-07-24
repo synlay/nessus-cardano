@@ -12,7 +12,7 @@ if builtins.currentSystem == "x86_64-linux" then
       pname = "cncli";
       version = "${cncliVersion}";
 
-      src = builtins.fetchurl "https://github.com/AndrewWestberg/cncli/releases/download/v${cncliVersion}/cncli-${cncliVersion}-x86_64-unknown-linux-gnu.tar.gz";
+      src = builtins.fetchurl "https://github.com/cardano-community/cncli/releases/download/v${cncliVersion}/cncli-${cncliVersion}-x86_64-unknown-linux-gnu.tar.gz";
 
       builder = ./builder-x86_64.sh;
     }
@@ -25,7 +25,7 @@ else if builtins.currentSystem == "aarch64-linux" then
     version = "${cncliVersion}";
 
     src = builtins.fetchGit {
-      url = "https://github.com/AndrewWestberg/cncli";
+      url = "https://github.com/cardano-community/cncli";
       ref = "refs/tags/v${cncliVersion}";
     };
 
