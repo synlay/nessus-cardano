@@ -35,7 +35,7 @@ if [[ "$LD_LIBRARY_PATH" != *"libsodium"* ]]; then
     mkdir -p $srcLibsod
 
     git clone "https://github.com/input-output-hk/libsodium" $srcLibsod
-    cd $srcLibsod; git checkout 66f017f16633f2060db25e17c170c2afa0f2a8a1
+    cd $srcLibsod; git checkout 66f017f1
 
     ./autogen.sh
     ./configure  --prefix=$outLibsod
