@@ -10,11 +10,11 @@
 pkgs.stdenv.mkDerivation {
 
   pname = "libsodium";
-  version = "1.31.0";
+  version = "1.35.0";
 
   src = builtins.fetchGit {
     url = "https://github.com/input-output-hk/libsodium";
-    rev = "c4f03ededb71073281529e47c78e91abffb323a3";
+    rev = "66f017f16633f2060db25e17c170c2afa0f2a8a1";
   };
 
   buildInputs = [

@@ -37,7 +37,7 @@ RUN ./autogen.sh \
 WORKDIR /src
 RUN git clone https://github.com/input-output-hk/libsodium
 WORKDIR libsodium
-RUN git checkout 66f017f1
+RUN git checkout 66f017f16633f2060db25e17c170c2afa0f2a8a1
 RUN ./autogen.sh \
   && ./configure \
   && make install

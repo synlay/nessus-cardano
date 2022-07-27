@@ -10,7 +10,7 @@
 pkgs.stdenv.mkDerivation {
 
   pname = "secp256k1";
-  version = "1.0.0";
+  version = "1.35.0";
 
   src = builtins.fetchGit {
     url = "https://github.com/bitcoin-core/secp256k1";
