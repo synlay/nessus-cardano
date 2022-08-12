@@ -8,8 +8,11 @@
 CARDANO_VER="1.35.3"
 CARDANO_REV="-rev1"
 
+# Also check nix/cardano/Dockerfile
+# Also check nix/cncli/Dockerfile
+# Also check nix/docker/baseImage
+DEBIAN_VER="11"
 # https://github.com/tstack/lnav
-DEBIAN_VER="10"
 LNAV_VER="0.10.1"
 
 # https://github.com/cardano-community/guild-operators/blob/alpha/scripts/cnode-helper-scripts/gLiveView.sh#L60

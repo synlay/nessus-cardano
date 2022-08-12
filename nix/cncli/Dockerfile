@@ -1,7 +1,7 @@
 
 ## Build + Install cncli ########################################################################################
 
-FROM debian:10-slim as builderA
+FROM debian:11-slim as builderA
 
 ARG CNCLI_VER
 ARG ARCH
