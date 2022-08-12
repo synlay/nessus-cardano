@@ -16,7 +16,7 @@ services:
   # Block Producer ----------------------------------------------------------------------------------------------------
 
   bprod:
-    image: nessusio/cardano-node:${CARDANO_NODE_VERSION:-latest}
+    image: synlay/cardano-node:${CARDANO_NODE_VERSION:-latest}
     container_name: bprod
     restart: ${CARDANO_RESTART_POLICY:-always}
     hostname: bprod

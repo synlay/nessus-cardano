@@ -5,13 +5,16 @@
 The quickest way to install Nix is to open a terminal and run the following command
 
 ```
-curl -L "https://nixos.org/nix/install" | sh
+sh <(curl -L https://nixos.org/nix/install) --daemon
 
 # Configure Nix to use the binary cache from IOHK
 sudo mkdir /etc/nix
 cat << EOF | sudo tee /etc/nix/nix.conf
-trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
-substituters = https://hydra.iohk.io https://iohk.cachix.org https://cache.nixos.org
+build-users-group = nixbld
+experimental-features = nix-command flakes
+allow-import-from-derivation = true
+substituters = https://cache.nixos.org https://hydra.iohk.io
+trusted-public-keys = iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo= hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
 EOF
 ```
 
@@ -30,7 +33,7 @@ ghcup list
 ## Haskell Language Server
 
 * HLS may continously crash with plutus pioneer program
-* Use cabal-3.4.0.0 / ghc-8.10.4
+* Use cabal-3.6.2.0 / ghc-8.10.7
 * Complile hls with `executable-dynamic: True`
 
 ```
@@ -120,7 +123,7 @@ docker run --detach \
 docker logs -f testrl
 ```
 
-## Using nessusio/cardano-node
+## Using synlay/cardano-node
 
 ```
 docker run --detach \
@@ -129,7 +132,7 @@ docker run --detach \
     -e CARDANO_NETWORK=testnet \
     -v test-data:/opt/cardano/data \
     -v node-ipc:/opt/cardano/ipc \
-    nessusio/cardano-node:${CARDANO_NODE_VERSION:-dev} run
+    synlay/cardano-node:${CARDANO_NODE_VERSION:-dev} run
 
 docker logs -f testrl
 
@@ -148,7 +151,7 @@ docker exec -it testrl gLiveView
 alias cardano-cli="docker run -it --rm \
   -v ~/cardano:/var/cardano/local \
   -v node-ipc:/opt/cardano/ipc \
-  nessusio/cardano-node:${CARDANO_NODE_VERSION:-dev} cardano-cli"
+  synlay/cardano-node:${CARDANO_NODE_VERSION:-dev} cardano-cli"
 
 TESTNET_MAGIC=$(docker exec testrl cat /opt/cardano/data/protocolMagicId) \
   && echo "TESTNET_MAGIC=$TESTNET_MAGIC"
@@ -453,7 +456,7 @@ docker run --detach \
     -v testnet-relay-config:/var/cardano/config  \
     -v test-data:/opt/cardano/data \
     -v node-ipc:/opt/cardano/ipc \
-    nessusio/cardano-node:${CARDANO_NODE_VERSION:-latest} run
+    synlay/cardano-node:${CARDANO_NODE_VERSION:-latest} run
 
 docker logs -n=200 -f testrl
 
@@ -535,7 +538,7 @@ docker run --detach \
     -v testnet-bprod-config:/var/cardano/config  \
     -v /mnt/disks/data00/testdat:/opt/cardano/data \
     -v node-ipc:/opt/cardano/ipc \
-    nessusio/cardano-node:${CARDANO_NODE_VERSION:-latest} run
+    synlay/cardano-node:${CARDANO_NODE_VERSION:-latest} run
 
 docker logs -n=200 -f testbp
 

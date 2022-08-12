@@ -46,7 +46,7 @@ docker run --detach \
     -p 3001:3001 \
     -e CARDANO_UPDATE_TOPOLOGY=true \
     -v node-data:/opt/cardano/data \
-    nessusio/cardano-node run
+    synlay/cardano-node run
 
 docker logs -f relay
 ```
@@ -60,7 +60,7 @@ docker run --detach \
     -e CARDANO_NETWORK=testnet \
     -e CARDANO_UPDATE_TOPOLOGY=true \
     -v test-data:/opt/cardano/data \
-    nessusio/cardano-node run
+    synlay/cardano-node run
 
 docker logs -f testrl
 ```
@@ -94,7 +94,7 @@ be use in the alias definition.
 ```
 alias cardano-cli="docker run -it --rm \
   -v node-ipc:/opt/cardano/ipc \
-  nessusio/cardano-node cardano-cli"
+  synlay/cardano-node cardano-cli"
 
 cardano-cli query tip --mainnet
 {
@@ -107,4 +107,4 @@ cardano-cli query tip --mainnet
 ## Getting Slot Leader Schedule
 
 The slot leader schedule is also provided by the
-[cardano-tools](https://hub.docker.com/repository/docker/nessusio/cardano-tools) image.
+[cardano-tools](https://hub.docker.com/repository/docker/synlay/cardano-tools) image.

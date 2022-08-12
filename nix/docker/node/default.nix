@@ -23,17 +23,18 @@
   glvVersion,
 
   # https://hydra.iohk.io/build/12179730/download/1/index.html
-  hydraBuild ? "12179730",
+  hydraBuild ? "8111119",
 
   baseImage ? import ../baseImage { inherit debianVersion; },
   cardano ? import ../../cardano { inherit cardanoVersion cardanoRev cabalVersion ghcVersion; },
   gLiveView ? import ../../gLiveView { inherit glvVersion; },
   libsodium ? import ../../libsodium {},
+  secp256k1 ? import ../../secp256k1 {},
 }:
 
 let
 
-  imageName = "nessusio/cardano-node";
+  imageName = "synlay/cardano-node";
 
   # curl -o "./nix/docker/node/context/config/mainnet-config.json" "https://hydra.iohk.io/build/${hydraBuild}/download/1/mainnet-config.json"
   # curl -o "./nix/docker/node/context/config/testnet-config.json" "https://hydra.iohk.io/build/${hydraBuild}/download/1/testnet-config.json"
@@ -79,6 +80,7 @@ in
       pkgs.socat             # Utility for bidirectional data transfer
       pkgs.utillinux         # System utilities for Linux
       libsodium              # Cardano crypto library fork
+      secp256k1              # Optimized C library for ECDSA signatures and secret/public key operations on curve secp256k1
 
       # Packages needed on RaspberryPi
       pkgs.numactl           # Tools for non-uniform memory access

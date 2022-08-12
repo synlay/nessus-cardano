@@ -4,7 +4,7 @@ source ./build-common.sh
 
 function buildManifest() {
 
-  IMAGE_NAME="nessusio/$1"
+  IMAGE_NAME="synlay/$1"
   IMAGE_TAG="$2"
 
   echo "docker manifest rm ${IMAGE_NAME}:${IMAGE_TAG}"
@@ -41,17 +41,9 @@ function buildImage () {
     VERSION_MAJOR=${CARDANO_VER}
     VERSION_REV=${CARDANO_REV}
 
-  elif [[ $shortName == "mmonit" ]]; then
-    VERSION_MAJOR=${MMONIT_VER}
-    VERSION_REV=${MMONIT_REV}
-
-  elif [[ $shortName == "monit" ]]; then
-    VERSION_MAJOR=${MONIT_VER}
-    VERSION_REV=${MONIT_REV}
-
   else
       echo "[Error] Illegal argument: $1"
-      echo "Usage: $0 [all|cardano-node|cardano-tools|mmonit|monit] [push]"
+      echo "Usage: $0 [all|cardano-node|cardano-tools] [push]"
       exit 1
   fi
 
@@ -81,7 +73,7 @@ function buildImage () {
 
 if (( $# < 1 )); then
     echo "[Error] Illegal number of arguments."
-    echo "Usage: $0 [all|cardano-node|cardano-tools|mmonit|monit] [push]"
+    echo "Usage: $0 [all|cardano-node|cardano-tools] [push]"
     exit 1
 fi
 
@@ -91,8 +83,6 @@ push=$2
 if [[ $shortName == "all" ]]; then
   buildImage "cardano-node"
   buildImage "cardano-tools"
-  buildImage "mmonit"
-  buildImage "monit"
 
 elif [[ $shortName == "cardano" ]]; then
   buildImage "cardano-node"

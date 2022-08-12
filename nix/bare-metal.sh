@@ -3,9 +3,9 @@
 # https://docs.cardano.org/projects/cardano-node/en/latest/getting-started/install.html
 
 # Some build-arg parameters
-cardanoVersion="1.26.0";
-cabalVersion="3.4.0.0";
-ghcVersion="8.10.4";
+cardanoVersion="1.35.0";
+cabalVersion="3.6.2.0";
+ghcVersion="8.10.7";
 
 ARCH=`uname -m`
 
@@ -58,6 +58,12 @@ if [[ "$LD_LIBRARY_PATH" != *"libsodium"* ]]; then
 else
   echo "OK"
 fi
+
+## Build + Install secp256k1 ########################################################################################
+
+TODO: build and install secp256k1 library
+echo "[Error] build and install instructions of secp256k1 need to be included in bare-metal.sh first"
+exit 1
 
 ## Build + Install GHC ########################################################################################
 
@@ -125,11 +131,11 @@ if [[ "$PATH" != *"cabal-${cabalVersion}"* ]]; then
 
     cd $srcCabal
     if [ "${ARCH}" = "x86_64" ]; then
-      wget -q "https://oleg.fi/cabal-install-${cabalTag}/cabal-install-${cabalVersion}-x86_64-ubuntu-16.04.tar.xz"
-      tar -xf cabal-install-${cabalVersion}-x86_64-ubuntu-16.04.tar.xz -C ${outCabal}/bin
+      wget -q "https://downloads.haskell.org/~cabal/cabal-install-${cabalTag}/cabal-install-${cabalVersion}-x86_64-linux-alpine-static.tar.xz"
+      tar -xf cabal-install-${cabalVersion}-x86_64-linux-alpine-static.tar.xz -C ${outCabal}/bin
     elif [ "${ARCH}" = "aarch64" ]; then
-      wget -q "https://oleg.fi/cabal-install-${cabalTag}/cabal-install-${cabalVersion}-aarch64-ubuntu-18.04.tar.xz"
-      tar -xf cabal-install-${cabalVersion}-aarch64-ubuntu-18.04.tar.xz -C ${outCabal}/bin
+      wget -q "https://downloads.haskell.org/~cabal/cabal-install-${cabalTag}/cabal-install-${cabalVersion}-aarch64-linux-deb10.tar.xz"
+      tar -xf cabal-install-${cabalVersion}-aarch64-linux-deb10.tar.xz -C ${outCabal}/bin
     fi
   fi
 

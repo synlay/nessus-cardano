@@ -8,7 +8,7 @@ alias astor="~/git/nessus-cardano/scripts/tokenswap/context/astor.tcl"
 alias cardano-cli="docker run -it --rm \
   -v ~/cardano:/var/cardano/local \
   -v node-ipc:/opt/cardano/ipc \
-  nessusio/cardano-node:${CARDANO_NODE_VERSION:-dev} cardano-cli"
+  synlay/cardano-node:${CARDANO_NODE_VERSION:-dev} cardano-cli"
 
 NETWORK=${BLOCKFROST_NETWORK:-testnet} \
 && OWNER_ADDR=$(cat ~/cardano/$NETWORK/keys/acc0/payment.addr) \

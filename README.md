@@ -16,14 +16,14 @@ docker run --detach \
     -p 3001:3001 \
     -v node-data:/opt/cardano/data \
     -v node-ipc:/opt/cardano/ipc \
-    nessusio/cardano-node run
+    synlay/cardano-node run
 
 docker logs -f relay
 ```
 
-This works on [x86_64](https://hub.docker.com/r/nessusio/cardano-node/tags?name=amd64) and [arm64](https://hub.docker.com/r/nessusio/cardano-node/tags?name=arm64).
+This works on [x86_64](https://hub.docker.com/r/synlay/cardano-node/tags?name=amd64) and [arm64](https://hub.docker.com/r/synlay/cardano-node/tags?name=arm64).
 
-The [nessusio/cardano-node](https://hub.docker.com/r/nessusio/cardano-node) image is built from source in multiple stages like [this](nix/cardano/Dockerfile) and then
+The [synlay/cardano-node](https://hub.docker.com/r/synlay/cardano-node) image is built from source in multiple stages like [this](nix/cardano/Dockerfile) and then
 with [Nix](https://nixos.org) like [this](nix/docker/node/default.nix).
 
 ## Running a Node on the Testnet
@@ -35,7 +35,7 @@ docker run --detach \
     -e CARDANO_NETWORK=testnet \
     -v test-data:/opt/cardano/data \
     -v node-ipc:/opt/cardano/ipc \
-    nessusio/cardano-node run
+    synlay/cardano-node run
 
 docker logs -f testrl
 ```
@@ -66,7 +66,7 @@ docker run --detach \
     -p 3001:3001 \
     -e CARDANO_UPDATE_TOPOLOGY=true \
     -v node-data:/opt/cardano/data \
-    nessusio/cardano-node run
+    synlay/cardano-node run
 
 $ docker exec -it relay tail /opt/cardano/logs/topologyUpdateResult
 { "resultcode": "201", "datetime":"2021-01-10 18:30:06", "clientIp": "209.250.233.200", "iptype": 4, "msg": "nice to meet you" }
@@ -85,7 +85,7 @@ docker run --detach \
     --name=relay \
     -p 3001:3001 \
     -v /mnt/disks/data00:/opt/cardano/data \
-    nessusio/cardano-node run
+    synlay/cardano-node run
 
 docker logs -f relay
 ```
@@ -104,7 +104,7 @@ docker run --detach \
     -e CARDANO_TOPOLOGY="/var/cardano/config/mainnet-topology.json" \
     -v cardano-relay-config:/var/cardano/config  \
     -v /mnt/disks/data00:/opt/cardano/data \
-    nessusio/cardano-node run
+    synlay/cardano-node run
 
 docker logs -f relay
 ```
@@ -124,7 +124,7 @@ docker run --detach \
     -e CARDANO_SHELLEY_OPERATIONAL_CERTIFICATE="/var/cardano/config/keys/pool/node.cert" \
     -v cardano-prod-config:/var/cardano/config  \
     -v /mnt/disks/data01:/opt/cardano/data \
-    nessusio/cardano-node run
+    synlay/cardano-node run
 
 docker logs -f bprod
 
@@ -142,7 +142,7 @@ be use in the alias definition.
 alias cardano-cli="docker run -it --rm \
   -v ~/cardano:/var/cardano/local \
   -v node-ipc:/opt/cardano/ipc \
-  nessusio/cardano-node cardano-cli"
+  synlay/cardano-node cardano-cli"
 
 cardano-cli query tip --mainnet
 {
@@ -201,17 +201,17 @@ For details you may want to have a look at [nix/docker/k8s/cardano-nodes.yaml](h
 
 For a Stake Pool Operator it is important to know when the node is scheduled to produce the next block. We definitely want to be online at that important moment and fullfil our block producing duties. There are better times to do node maintenance.
 
-This important functionality has also been built into the [nessusio/cardano-tools](https://hub.docker.com/r/nessusio/cardano-tools) image.
+This important functionality has also been built into the [synlay/cardano-tools](https://hub.docker.com/r/synlay/cardano-tools) image.
 
 First, lets define an alias and ping the node that we want to work with.
 
-Details about this API are [here](https://github.com/AndrewWestberg/cncli/blob/develop/USAGE.md).
+Details about this API are [here](https://github.com/cardano-community/cncli/blob/develop/USAGE.md).
 
 ```
 $ alias cncli="docker run -it --rm \
   -v ~/cardano:/var/cardano/local \
   -v cncli:/var/cardano/cncli \
-  nessusio/cardano-tools cncli"
+  synlay/cardano-tools cncli"
 
 NODE_IP=192.168.0.30
 

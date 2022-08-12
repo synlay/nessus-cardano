@@ -20,7 +20,7 @@ Each image comes in multiple arch variant. Current we support `amd64` and `arm64
 For these tools to work, we must have a running node, that publishes the prometheus port
 and gives access to the socket path, for example through a shared volume.
 
-For details, please have a look at the [cardano-node](https://hub.docker.com/repository/docker/nessusio/cardano-node) image.
+For details, please have a look at the [cardano-node](https://hub.docker.com/repository/docker/synlay/cardano-node) image.
 
 ```
 docker run --detach \
@@ -28,7 +28,7 @@ docker run --detach \
     -p 3001:3001 \
     -e CARDANO_UPDATE_TOPOLOGY=true \
     -v /mnt/disks/data00:/opt/cardano/data \
-    nessusio/cardano-node run
+    synlay/cardano-node run
 
 docker logs -f relay
 ```
@@ -38,13 +38,13 @@ docker logs -f relay
 Accessing the cncli through Docker can also be a little convoluted.
 We again define an alias for it.
 
-The details about this API are [here](https://github.com/AndrewWestberg/cncli/blob/develop/README.md#running).
+The details about this API are [here](https://github.com/cardano-community/cncli/blob/develop/README.md#running).
 
 ```
 alias cncli="docker run -it --rm \
   -v ~/cardano/keys:/var/cardano/keys \
   -v cncli:/var/cardano/cncli \
-  nessusio/cardano-tools cncli"
+  synlay/cardano-tools cncli"
 
 NODE_IP=10.128.0.31
 

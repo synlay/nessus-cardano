@@ -35,7 +35,7 @@ EOF
 # Bash into the node to look around
 docker run --rm -it --entrypoint=bash \
   -v node-data:/opt/cardano/data \
-  nessusio/cardano-node:${CARDANO_NODE_VERSION:-dev}
+  synlay/cardano-node:${CARDANO_NODE_VERSION:-dev}
 
 cardano-node run \
   --config /opt/cardano/config/mainnet-config.json \
@@ -55,7 +55,7 @@ docker run --detach \
     -p 3001:3001 \
     -v node-data:/opt/cardano/data \
     -v node-ipc:/opt/cardano/ipc \
-    nessusio/cardano-node:${CARDANO_NODE_VERSION:-dev} run
+    synlay/cardano-node:${CARDANO_NODE_VERSION:-dev} run
 
 docker logs -n 100 -f relay
 
@@ -81,7 +81,7 @@ docker exec relay cat /var/cardano/config/mainnet-topology.json
 alias cardano-cli="docker run -it --rm \
   -v ~/cardano:/var/cardano/local \
   -v node-ipc:/opt/cardano/ipc \
-  nessusio/cardano-node:${CARDANO_NODE_VERSION:-dev} cardano-cli"
+  synlay/cardano-node:${CARDANO_NODE_VERSION:-dev} cardano-cli"
 
 cardano-cli query tip --mainnet
 {
@@ -171,66 +171,6 @@ docker logs -f nginx
 
 curl http://localhost:12798/metrics/xyz.../liveness | sort
 ```
-
-## Run Monit
-
-```
-# Add monit to the environment
-nix-shell
-> monit -V
-
-# Setup the Config
-
-MMONIT_PORT=8080
-MMONIT_ADDR=astorpool.net
-MMONIT_AUTH='username:changeit'
-
-# Common config
-cat << EOF > ~/.monitrc
-set daemon 5 with start delay 10
-set eventqueue basedir /var/monit/ slots 1000
-set mmonit http://$MMONIT_AUTH@$MMONIT_ADDR:$MMONIT_PORT/collector
-set httpd port 2812 and
-    use address 0.0.0.0    # bind to all interfaces (i.e. not just to localhost)
-    allow $MMONIT_ADDR     # allow the M/Monit host to connect to the server
-    allow $MMONIT_AUTH     # monit authorization
-EOF
-
-# Relay specific
-cat << EOF >> ~/.monitrc
-check filesystem  system    path /dev/sda2
-check system      $(hostname)
-EOF
-
-# Block Producer specific
-cat << EOF >> ~/.monitrc
-check filesystem  node-data path /dev/sdb
-check system      $(hostname)
-EOF
-
-```
-
-## Run M/Monit
-
-Login: admin/swordfish
-
-```
-CONFDIR="/usr/local/var/mmonit/conf"
-LICENSE="${CONFDIR}/license.xml"
-
-docker rm -f mmonit
-docker run --detach \
-  --name=mmonit \
-  -p 8080:8080 \
-  --restart=always \
-  -v ~/mmonit/conf/license.xml:${LICENSE} \
-  nessusio/mmonit -i
-
-docker logs -f mmonit
-
-docker exec -it mmonit cat ${LICENSE}
-```
-
 ## Bare Metal Build
 
 Debian 10 (Buster)
