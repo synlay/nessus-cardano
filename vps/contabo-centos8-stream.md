@@ -115,29 +115,3 @@ docker ps
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64" -o /usr/local/bin/docker-compose \
   && sudo chmod +x /usr/local/bin/docker-compose
 ```
-
-### Install Monit
-
-```
-sudo yum install -y monit \
-  && sudo cp ~/git/nessus-cardano/nix/docker/monit/context/monitrc /etc/monitrc
-
-MMONIT_PORT=8080
-MMONIT_ADDR=astorpool.net
-MMONIT_AUTH='username:changeit'
-
-sudo mkdir -p /etc/monit.d \
-&& cat << EOF | sudo tee /etc/monit.d/monitrc-extras
-set eventqueue basedir /var/monit/ slots 1000
-set mmonit http://$MMONIT_AUTH@$MMONIT_ADDR:$MMONIT_PORT/collector
-# set httpd port 2812 and
-#    use address 0.0.0.0    # bind to all interfaces (i.e. not just to localhost)
-#    allow $MMONIT_ADDR     # allow the M/Monit host to connect to the server
-#    allow $MMONIT_AUTH     # monit authorization
-check filesystem node-data with path /dev/sda2
-    if space usage > 75% then alert
-EOF
-
-# Run the monit daemon
-sudo monit -v
-```

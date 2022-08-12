@@ -171,45 +171,6 @@ docker logs -f nginx
 
 curl http://localhost:12798/metrics/xyz.../liveness | sort
 ```
-
-## Run Monit
-
-```
-# Add monit to the environment
-nix-shell
-> monit -V
-
-# Setup the Config
-
-MMONIT_PORT=8080
-MMONIT_ADDR=astorpool.net
-MMONIT_AUTH='username:changeit'
-
-# Common config
-cat << EOF > ~/.monitrc
-set daemon 5 with start delay 10
-set eventqueue basedir /var/monit/ slots 1000
-set mmonit http://$MMONIT_AUTH@$MMONIT_ADDR:$MMONIT_PORT/collector
-set httpd port 2812 and
-    use address 0.0.0.0    # bind to all interfaces (i.e. not just to localhost)
-    allow $MMONIT_ADDR     # allow the M/Monit host to connect to the server
-    allow $MMONIT_AUTH     # monit authorization
-EOF
-
-# Relay specific
-cat << EOF >> ~/.monitrc
-check filesystem  system    path /dev/sda2
-check system      $(hostname)
-EOF
-
-# Block Producer specific
-cat << EOF >> ~/.monitrc
-check filesystem  node-data path /dev/sdb
-check system      $(hostname)
-EOF
-
-```
-
 ## Bare Metal Build
 
 Debian 10 (Buster)
