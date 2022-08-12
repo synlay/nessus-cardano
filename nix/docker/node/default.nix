@@ -22,9 +22,10 @@
   ghcVersion,
   glvVersion,
 
-  # https://hydra.iohk.io/build/12179730/download/1/index.html
-  hydraBuild ? "8111119",
-
+  # Please see build number for cardano-deployment / cardano-html through "Hydra binaries" download link from the release page e.q. https://hydra.iohk.io/build/17428016#tabs-constituents
+  # https://hydra.iohk.io/build/17427100/download/1/index.html
+  hydraBuild ? "17427100",
+  
   baseImage ? import ../baseImage { inherit debianVersion; },
   cardano ? import ../../cardano { inherit cardanoVersion cardanoRev cabalVersion ghcVersion; },
   gLiveView ? import ../../gLiveView { inherit glvVersion; },
