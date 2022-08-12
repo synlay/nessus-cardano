@@ -1,3 +1,4 @@
+**NOTE: This is a fork for own purpose only as the author of the [upstream project](https://github.com/tdiesler/nessus-cardano) unfortunately no longer maintains the project**
 
 # Nessus Cardano
 
