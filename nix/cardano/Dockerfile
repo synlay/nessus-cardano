@@ -10,7 +10,7 @@ ARG ARCH
 
 ## Install dependencies, secp256k1 and libsodium #################################################################################
 
-FROM debian:10-slim as builderA
+FROM debian:11-slim as builderA
 
 ENV DEBIAN_FRONTEND=noninteractive
 

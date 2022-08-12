@@ -8,7 +8,7 @@ ARG LNAV_VER
 
 ## Install required dependencies ######################################################################################
 
-FROM debian:10-slim as builderA
+FROM debian:11-slim as builderA
 
 ENV DEBIAN_FRONTEND=noninteractive
 

@@ -173,7 +173,7 @@ curl http://localhost:12798/metrics/xyz.../liveness | sort
 ```
 ## Bare Metal Build
 
-Debian 10 (Buster)
+Debian 11
 
 ```
 # Install system dependencies
