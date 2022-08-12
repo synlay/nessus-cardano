@@ -14,7 +14,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
 RUN apt-get update \
-  && apt-get install -y  \
+  && apt-get install -y \
     bzip2 curl zlib1g-dev \
     libarchive-dev libcurl4-openssl-dev libncurses-dev libpcre++-dev libreadline-dev libsqlite3-dev
 
@@ -28,8 +28,8 @@ ARG LNAV_VER
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
-RUN apt-get install -y  \
-  autoconf automake build-essential git ca-certificates
+RUN apt-get install -y \
+  autoconf automake build-essential git
 
 RUN git clone --depth 1 --branch v${LNAV_VER} https://github.com/tstack/lnav gitsrc
 WORKDIR gitsrc

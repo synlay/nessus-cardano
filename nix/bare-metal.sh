@@ -62,7 +62,7 @@ fi
 ## Build + Install secp256k1 ########################################################################################
 
 TODO: build and install secp256k1 library
-echo "[Error] build and install instructions of secp256k1 need to be included in bare-metal.sh"
+echo "[Error] build and install instructions of secp256k1 need to be included in bare-metal.sh first"
 exit 1
 
 ## Build + Install GHC ########################################################################################

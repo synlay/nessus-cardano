@@ -16,8 +16,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
 RUN apt-get update \
-  && apt-get install -y  \
-    autoconf automake build-essential g++ git ca-certificates jq \
+  && apt-get install -y \
+    autoconf automake build-essential g++ git jq \
     libffi-dev libgmp-dev libncursesw5 libnuma-dev libssl-dev libsystemd-dev libtinfo-dev libtool llvm \
     make pkg-config tmux wget zlib1g-dev
 
