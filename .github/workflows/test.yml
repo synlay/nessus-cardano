@@ -14,4 +14,21 @@ jobs:
           trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
           substituters = https://hydra.iohk.io https://cache.nixos.org/
     # - run: nix-env -i docker niv
-    - run: ./build.sh cardano-node false
+    - uses: uraimo/run-on-arch-action@v2
+      name: Run commands
+      id: runcmd
+      with:
+        arch: aarch64
+        distro: ubuntu_latest
+
+        # # Not required, but speeds up builds by storing container images in
+        # # a GitHub package registry.
+        # githubToken: ${{ github.token }}
+
+        # Set an output parameter `uname` for use in subsequent steps
+        run: |
+          uname -a
+          echo ::set-output name=uname::$(uname -a)
+          ./build.sh cardano-node false
+
+    # - run: ./build.sh cardano-node false
