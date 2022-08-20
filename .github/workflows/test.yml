@@ -33,5 +33,6 @@ jobs:
     #       echo ::set-output name=uname::$(uname -a)
     #       ./build.sh cardano-node false
 
-    - run: ./build.sh cardano-node false
+    - run: nix-env -i haskell.compiler.ghc8107
     # - run: nix-shell -p haskell.compiler.ghc8107
+    - run: ./build.sh cardano-node false
