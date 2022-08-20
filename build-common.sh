@@ -26,6 +26,7 @@ CNCLI_VER="5.1.0"
 # Check: https://github.com/input-output-hk/cardano-node/blob/master/.github/workflows/haskell.yml#L63
 CABAL_VER="3.6.2.0"
 # Check: https://github.com/input-output-hk/cardano-node/blob/master/.github/workflows/haskell.yml#L27
+# Check: https://github.com/synlay/nessus-cardano/blob/master/nix/cardano/default.nix
 GHC_VER="8.10.7"
 
 ARCH=`uname -m`
