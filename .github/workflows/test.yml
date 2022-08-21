@@ -6,7 +6,12 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: "Setup haskell"
+      uses: haskell/actions/setup@v2
+      id: setup-haskell
+      with:
+        ghc-version: 8.10.7
+        cabal-version: 3.6.2.0
     - uses: cachix/install-nix-action@v17
       with:
         nix_path: nixpkgs=channel:nixos-unstable
@@ -35,6 +40,8 @@ jobs:
 
     # - run: nix-env -i haskell.compiler.ghc8107
     # - run: nix-env -qaP -A nixpkgs.haskellPackages cabal-install
-    - run: nix-env -i cabal-install-3.6.2.0
+    # - run: nix-env -i cabal-install-3.6.2.0
     # - run: nix-shell -p haskell.compiler.ghc8107 cabal-install-3.6.2.0
-    - run: nix-shell -p haskell.compiler.ghc8107 --quiet --run "./build.sh cardano-node false"
+    # - run: nix-shell -p haskell.compiler.ghc8107 --quiet --run "./build.sh cardano-node false"
+    - uses: actions/checkout@v3
+    - run: nix-shell --quiet --run "./build.sh cardano-node false"
