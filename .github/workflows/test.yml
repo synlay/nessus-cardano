@@ -44,7 +44,7 @@ jobs:
     # - run: nix-shell -p haskell.compiler.ghc8107 cabal-install-3.6.2.0
     # - run: nix-shell -p haskell.compiler.ghc8107 --quiet --run "./build.sh cardano-node false"
     - uses: actions/checkout@v3
-    - run: nix-shell -p haskell.compiler.ghc8107"
+    - run: nix-shell -p haskell.compiler.ghc8107
     - run: ghcup set cabal 3.6.2.0 && ghcup set cabal 3.6.2.0
     - run: cabal --version
     # - run: ./build.sh cardano-node false
