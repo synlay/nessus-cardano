@@ -60,8 +60,15 @@ fi
 
 echo "Checking cabal ..."
 if [[ "$PATH" != *"cabal-install-${cabalVersion}"* ]]; then
-  echo "[Error] Cannot find cabal-${cabalVersion} in $PATH"
-  exit 1
+  echo "cabal-install not found in nix env..."
+  echo "trying to use another installed version..."
+  cabal --version
+  if [[ "$?" != "0" ]]; then
+    echo "[Error] Cannot find cabal-${cabalVersion} in $PATH"
+    exit 1
+  else
+    echo "OK"
+  fi
 else
   echo "OK"
 fi
