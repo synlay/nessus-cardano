@@ -91,6 +91,7 @@ cabal update
 echo "Cabal configure ##########################################################"
 cabal configure
 
+echo "with-compiler: ${ghcVersion}" >> cabal.project.local
 echo "package cardano-crypto-praos" >> cabal.project.local
 echo "  flags: -external-libsodium-vrf" >> cabal.project.local
 

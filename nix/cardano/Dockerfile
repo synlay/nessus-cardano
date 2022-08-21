@@ -15,11 +15,12 @@ FROM debian:11-slim as builderA
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
+# Check: https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/install.md#installation-dependencies
 RUN apt-get update \
   && apt-get install -y \
     autoconf automake build-essential g++ git jq \
     libffi-dev libgmp-dev libncursesw5 libnuma-dev libssl-dev libsystemd-dev libtinfo-dev libtool llvm \
-    make pkg-config tmux wget zlib1g-dev
+    make pkg-config tmux wget zlib1g-dev liblmdb-dev
 
 # Install secp256k1
 WORKDIR /src
