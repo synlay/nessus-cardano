@@ -162,7 +162,7 @@ fetchTopology () {
     fi
 
     if [[ -n "${CUSTOM_PEERS}" ]]; then
-      topo="$(cat "${TOPOLOGY}".tmp)"
+      topo="$(cat "${TOPOLOGY}".tmp | jq .Producers)"
       IFS='|' read -ra cpeers <<< "${CUSTOM_PEERS}"
       custom_peers=[]
       for cpeer in "${cpeers[@]}"; do
