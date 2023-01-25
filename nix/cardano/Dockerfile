@@ -109,6 +109,21 @@ RUN echo "package tx-generator" >> cabal.project.local
 RUN echo "  ghc-options: -XConstraintKinds" >> cabal.project.local
 RUN echo "" >> cabal.project.local
 
+# 1.35.4 - Hotfix for build error
+RUN echo "package cardano-testnet-1.35.4" >> cabal.project.local
+RUN echo "  ghc-options: -Wno-unused-packages" >> cabal.project.local
+RUN echo "" >> cabal.project.local
+
+# 1.35.4 - Hotfix for build error
+RUN echo "package cardano-testnet" >> cabal.project.local
+RUN echo "  ghc-options: -Wno-unused-packages" >> cabal.project.local
+RUN echo "" >> cabal.project.local
+
+# 1.35.4 - Hotfix for build error
+RUN echo "package cardano-testnet-tests" >> cabal.project.local
+RUN echo "  ghc-options: -Wno-unused-packages" >> cabal.project.local
+RUN echo "" >> cabal.project.local
+
 # Can no longer build cardano-node on arm64
 # https://github.com/input-output-hk/cardano-node/issues/3395
 RUN echo "package trace-dispatcher" >> cabal.project.local
