@@ -104,24 +104,8 @@ RUN echo "package cardano-crypto-praos" >> cabal.project.local
 RUN echo "  flags: -external-libsodium-vrf" >> cabal.project.local
 RUN echo "" >> cabal.project.local
 
-# 1.35.4 - Hotfix for build error
-RUN echo "package tx-generator" >> cabal.project.local
-RUN echo "  ghc-options: -XConstraintKinds" >> cabal.project.local
-RUN echo "" >> cabal.project.local
-
-# 1.35.4 - Hotfix for build error
-RUN echo "package cardano-testnet-1.35.4" >> cabal.project.local
-RUN echo "  ghc-options: -Wno-unused-packages" >> cabal.project.local
-RUN echo "" >> cabal.project.local
-
-# 1.35.4 - Hotfix for build error
-RUN echo "package cardano-testnet" >> cabal.project.local
-RUN echo "  ghc-options: -Wno-unused-packages" >> cabal.project.local
-RUN echo "" >> cabal.project.local
-
-# 1.35.4 - Hotfix for build error
-RUN echo "package cardano-testnet-tests" >> cabal.project.local
-RUN echo "  ghc-options: -Wno-unused-packages" >> cabal.project.local
+RUN echo "package HsOpenSSL" >> cabal.project.local
+RUN echo "  flags: +use-pkg-config" >> cabal.project.local
 RUN echo "" >> cabal.project.local
 
 # Can no longer build cardano-node on arm64
