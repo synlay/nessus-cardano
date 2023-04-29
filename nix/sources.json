@@ -17,11 +17,11 @@
         "homepage": "https://input-output-hk.github.io/haskell.nix",
         "owner": "input-output-hk",
         "repo": "haskell.nix",
-        "_see": "https://github.com/input-output-hk/cardano-node/blob/1.35.5/flake.lock#L3286",
-        "rev": "3fbb17e63c4e052c8289858fa6444d1c66ab6f52",
-        "sha256": "ea8Celj9aPb1HG8mGNorqMr5+3xZzjuhjF89Mj4hSLU=",
+        "_see": "https://github.com/input-output-hk/cardano-node/blob/1.35.7/flake.lock#L2064",
+        "rev": "9f75bfdde36def44543dba510fa2795b897e145e",
+        "sha256": "gK0vq6v8NioSWbhpWyl73oG1s7PQemj2XWrk0qFNfk4=",
         "type": "tarball",
-        "url": "https://github.com/input-output-hk/haskell.nix/archive/3fbb17e63c4e052c8289858fa6444d1c66ab6f52.tar.gz",
+        "url": "https://github.com/input-output-hk/haskell.nix/archive/9f75bfdde36def44543dba510fa2795b897e145e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
