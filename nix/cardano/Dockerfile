@@ -104,6 +104,10 @@ RUN echo "package cardano-crypto-praos" >> cabal.project.local
 RUN echo "  flags: -external-libsodium-vrf" >> cabal.project.local
 RUN echo "" >> cabal.project.local
 
+RUN echo "package HsOpenSSL" >> cabal.project.local
+RUN echo "  flags: +use-pkg-config" >> cabal.project.local
+RUN echo "" >> cabal.project.local
+
 # Can no longer build cardano-node on arm64
 # https://github.com/input-output-hk/cardano-node/issues/3395
 RUN echo "package trace-dispatcher" >> cabal.project.local

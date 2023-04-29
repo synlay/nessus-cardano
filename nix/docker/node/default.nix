@@ -22,10 +22,6 @@
   ghcVersion,
   glvVersion,
 
-  # Please see build number for cardano-deployment / cardano-html through "Hydra binaries" download link from the release page e.q. https://hydra.iohk.io/build/17428016#tabs-constituents
-  # https://hydra.iohk.io/build/17427100/download/1/index.html
-  hydraBuild ? "17427100",
-  
   baseImage ? import ../baseImage { inherit debianVersion; },
   cardano ? import ../../cardano { inherit cardanoVersion cardanoRev cabalVersion ghcVersion; },
   gLiveView ? import ../../gLiveView { inherit glvVersion; },
@@ -37,22 +33,22 @@ let
 
   imageName = "synlay/cardano-node";
 
-  # curl -o "./nix/docker/node/context/config/mainnet-config.json" "https://hydra.iohk.io/build/${hydraBuild}/download/1/mainnet-config.json"
-  # curl -o "./nix/docker/node/context/config/testnet-config.json" "https://hydra.iohk.io/build/${hydraBuild}/download/1/testnet-config.json"
+  # curl -o "./nix/docker/node/context/config/mainnet-config.json" "https://book.world.dev.cardano.org/environments/mainnet/config.json"
+  # curl -o "./nix/docker/node/context/config/testnet-config.json" "https://book.world.dev.cardano.org/environments/preprod/config.json"
 
   # The mainet configs for the cardano-node
   mainnet-config = ./context/config/mainnet-config.json;
-  mainnet-topology = builtins.fetchurl "https://hydra.iohk.io/build/${hydraBuild}/download/1/mainnet-topology.json";
-  mainnet-byron-genesis = builtins.fetchurl "https://hydra.iohk.io/build/${hydraBuild}/download/1/mainnet-byron-genesis.json";
-  mainnet-shelley-genesis = builtins.fetchurl "https://hydra.iohk.io/build/${hydraBuild}/download/1/mainnet-shelley-genesis.json";
-  mainnet-alonzo-genesis = builtins.fetchurl "https://hydra.iohk.io/build/${hydraBuild}/download/1/mainnet-alonzo-genesis.json";
+  mainnet-topology = builtins.fetchurl "https://book.world.dev.cardano.org/environments/mainnet/topology.json";
+  mainnet-byron-genesis = builtins.fetchurl "https://book.world.dev.cardano.org/environments/mainnet/byron-genesis.json";
+  mainnet-shelley-genesis = builtins.fetchurl "https://book.world.dev.cardano.org/environments/mainnet/shelley-genesis.json";
+  mainnet-alonzo-genesis = builtins.fetchurl "https://book.world.dev.cardano.org/environments/mainnet/alonzo-genesis.json";
 
   # The testnet configs for the cardano-node
   testnet-config = ./context/config/testnet-config.json;
-  testnet-topology = builtins.fetchurl "https://hydra.iohk.io/build/${hydraBuild}/download/1/testnet-topology.json";
-  testnet-byron-genesis = builtins.fetchurl "https://hydra.iohk.io/build/${hydraBuild}/download/1/testnet-byron-genesis.json";
-  testnet-shelley-genesis = builtins.fetchurl "https://hydra.iohk.io/build/${hydraBuild}/download/1/testnet-shelley-genesis.json";
-  testnet-alonzo-genesis = builtins.fetchurl "https://hydra.iohk.io/build/${hydraBuild}/download/1/testnet-alonzo-genesis.json";
+  testnet-topology = builtins.fetchurl "https://book.world.dev.cardano.org/environments/preprod/topology.json";
+  testnet-byron-genesis = builtins.fetchurl "https://book.world.dev.cardano.org/environments/preprod/byron-genesis.json";
+  testnet-shelley-genesis = builtins.fetchurl "https://book.world.dev.cardano.org/environments/preprod/shelley-genesis.json";
+  testnet-alonzo-genesis = builtins.fetchurl "https://book.world.dev.cardano.org/environments/preprod/alonzo-genesis.json";
 
   # Custom mainnet-config.json
 
