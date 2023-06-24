@@ -1,7 +1,7 @@
 
 ## Build + Install cncli ########################################################################################
 
-FROM debian:11-slim as builderA
+FROM debian:11-slim as buildera
 
 ARG CNCLI_VER
 ARG ARCH
@@ -26,7 +26,7 @@ RUN echo 'source $HOME/.cargo/env' >> $HOME/.bashrc
 
 RUN apt-get install -y autoconf automake build-essential g++ \
   libffi-dev libgmp-dev libncursesw5 libssl-dev libsystemd-dev libtinfo-dev libtool \
-  make pkg-config tmux zlib1g-dev
+  make pkg-config tmux zlib1g-dev musl-tools
 
 RUN git clone --recurse-submodules https://github.com/cardano-community/cncli \
     && cd cncli && git checkout v${CNCLI_VER} \

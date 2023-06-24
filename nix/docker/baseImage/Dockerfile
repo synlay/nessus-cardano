@@ -8,7 +8,7 @@ ARG LNAV_VER
 
 ## Install required dependencies ######################################################################################
 
-FROM debian:11-slim as builderA
+FROM debian:11-slim as buildera
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -20,7 +20,7 @@ RUN apt-get update \
 
 ## Build lnav #########################################################################################################
 
-FROM builderA as builderB
+FROM buildera as builderb
 
 # Required version args
 ARG LNAV_VER
@@ -29,7 +29,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
 RUN apt-get install -y \
-  autoconf automake build-essential git
+  autoconf automake build-essential git libpcre2-dev
 
 RUN git clone --depth 1 --branch v${LNAV_VER} https://github.com/tstack/lnav gitsrc
 WORKDIR gitsrc
@@ -40,9 +40,9 @@ RUN ./autogen.sh \
 
 ## Buid Cardano #######################################################################################################
 
-FROM builderA
+FROM buildera
 
 # Copy the executables from the previous build
-COPY --from=builderB /usr/bin/lnav /usr/local/bin/
+COPY --from=builderb /usr/bin/lnav /usr/local/bin/
 
 WORKDIR /

@@ -10,7 +10,7 @@ ARG ARCH
 
 ## Install dependencies, secp256k1 and libsodium #################################################################################
 
-FROM debian:11-slim as builderA
+FROM debian:11-slim as buildera
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -47,7 +47,7 @@ ENV PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 
 ## Build + Install GHC & Cabal ########################################################################################
 
-FROM builderA as builderB
+FROM buildera as builderb
 
 ARG CABAL_VER
 ARG GHC_VER
@@ -84,7 +84,7 @@ RUN cabal --version
 
 ## Buid Cardano #######################################################################################################
 
-FROM builderB as builderC
+FROM builderb as builderc
 
 ARG CARDANO_VER
 ARG CABAL_VER
@@ -125,11 +125,11 @@ WORKDIR /root
 
 ## Buid Cardano #######################################################################################################
 
-FROM builderA
+FROM buildera
 
 # Copy the executables from the previous build
-COPY --from=builderC /usr/local/bin/cardano-node /usr/local/bin/
-COPY --from=builderC /usr/local/bin/cardano-cli /usr/local/bin/
-COPY --from=builderC /usr/local/bin/cardano-submit-api /usr/local/bin/
+COPY --from=builderc /usr/local/bin/cardano-node /usr/local/bin/
+COPY --from=builderc /usr/local/bin/cardano-cli /usr/local/bin/
+COPY --from=builderc /usr/local/bin/cardano-submit-api /usr/local/bin/
 
 WORKDIR /
