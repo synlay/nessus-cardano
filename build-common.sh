@@ -19,7 +19,8 @@ LNAV_VER="0.11.1"
 GLVIEW_VER="1.27.4"
 
 # https://github.com/cardano-community/cncli
-CNCLI_VER="5.3.2"
+# TODO: version 5.3.2 needs some modification additional work in Dockerfiles because of missing deps
+CNCLI_VER="5.2.0"
 
 # Check: https://github.com/input-output-hk/cardano-node/blob/1.35.7/doc/getting-started/install.md
 # Check: https://github.com/input-output-hk/cardano-node/blob/1.35.7/.github/workflows/haskell.yml#L49
