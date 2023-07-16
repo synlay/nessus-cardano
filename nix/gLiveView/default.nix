@@ -27,7 +27,7 @@ pkgs.stdenv.mkDerivation {
   src = builtins.fetchGit {
     name = "guild-operators";
     url = "https://github.com/cardano-community/guild-operators.git";
-    rev = "2176da445a4028c93094a7fbb7c5831663462ea5";
+    rev = "9c67a41bd9b77a11c6fe0a526f2fa947f980c3af";
     ref = "alpha";
   };
 
