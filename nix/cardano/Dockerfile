@@ -74,8 +74,10 @@ RUN ghc --version
 ARG CABAL_TAG="${CABAL_VER}"
 
 WORKDIR /src
+# TODO: Switch back to official cabal-install after packages are readded for debian10 + 11 on aarch64
+# wget -q https://downloads.haskell.org/~cabal/cabal-install-${CABAL_TAG}/cabal-install-${CABAL_VER}-aarch64-linux-deb10.tar.xz \
 RUN if [ "${ARCH}" = "aarch64" ]; then \
-  wget -q https://downloads.haskell.org/~cabal/cabal-install-${CABAL_TAG}/cabal-install-${CABAL_VER}-aarch64-linux-deb10.tar.xz \
+  wget -q https://downloads.haskell.org/~ghcup/unofficial-bindists/cabal/${CABAL_VER}/cabal-install-${CABAL_VER}-aarch64-linux-deb10.tar.xz \
   && tar -xf cabal-install-${CABAL_VER}-aarch64-linux-deb10.tar.xz; \
 elif [ "${ARCH}" = "x86_64" ]; then \
   wget -q https://downloads.haskell.org/~cabal/cabal-install-${CABAL_TAG}/cabal-install-${CABAL_VER}-x86_64-linux-alpine-static.tar.xz \
