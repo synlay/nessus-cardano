@@ -5,12 +5,12 @@
 # Also check nix/secp256k1/default.nix
 # Also check libsodium + secp256k1 in nix/cardano/Dockerfile
 CARDANO_VER="8.1.1"
-CARDANO_REV="-rev1"
+CARDANO_REV="-rev2"
 
 # Also check nix/cardano/Dockerfile
 # Also check nix/cncli/Dockerfile
 # Also check nix/docker/baseImage
-DEBIAN_VER="12"
+DEBIAN_VER="11"
 # https://github.com/tstack/lnav
 # Also check nix/docker/baseImage/shell.nix
 LNAV_VER="0.11.2"
