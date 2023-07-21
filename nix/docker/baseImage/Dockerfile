@@ -16,7 +16,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
   && apt-get install -y \
     bzip2 curl zlib1g-dev \
-    libarchive-dev libcurl4-openssl-dev libncurses-dev libpcre++-dev libreadline-dev libsqlite3-dev
+    libarchive-dev libcurl4-openssl-dev libncurses-dev libpcre2-dev libreadline-dev libsqlite3-dev
+
+Using ./nix/cardano/target/cardano-node-8.1.1-arm64
+Using ./nix/cncli/target/cncli-5.2.0-arm64
+
 
 ## Build lnav #########################################################################################################
 

@@ -21,9 +21,7 @@ RUN apt-get update \
     libffi-dev libgmp-dev libncursesw5 libnuma-dev libssl-dev libsystemd-dev libtinfo-dev libtool llvm \
     make pkg-config tmux wget zlib1g-dev \
     libsodium23 libsodium-dev \
-    libsystemd0 libsystemd-dev \
-  && apt-get -y remove --purge software-properties-common \
-  && apt-get -y autoremove
+    libsystemd0 libsystemd-dev
 
 # Install secp256k1
 WORKDIR /src

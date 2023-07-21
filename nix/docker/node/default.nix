@@ -42,6 +42,7 @@ let
   mainnet-byron-genesis = builtins.fetchurl "https://book.world.dev.cardano.org/environments/mainnet/byron-genesis.json";
   mainnet-shelley-genesis = builtins.fetchurl "https://book.world.dev.cardano.org/environments/mainnet/shelley-genesis.json";
   mainnet-alonzo-genesis = builtins.fetchurl "https://book.world.dev.cardano.org/environments/mainnet/alonzo-genesis.json";
+  mainnet-conway-genesis = builtins.fetchurl "https://book.world.dev.cardano.org/environments/mainnet/conway-genesis.json";
 
   # The testnet configs for the cardano-node
   testnet-config = ./context/config/testnet-config.json;
@@ -49,6 +50,7 @@ let
   testnet-byron-genesis = builtins.fetchurl "https://book.world.dev.cardano.org/environments/preprod/byron-genesis.json";
   testnet-shelley-genesis = builtins.fetchurl "https://book.world.dev.cardano.org/environments/preprod/shelley-genesis.json";
   testnet-alonzo-genesis = builtins.fetchurl "https://book.world.dev.cardano.org/environments/preprod/alonzo-genesis.json";
+  testnet-conway-genesis = builtins.fetchurl "https://book.world.dev.cardano.org/environments/preprod/conway-genesis.json";
 
   # Custom mainnet-config.json
 
@@ -117,12 +119,14 @@ in
       cp ${mainnet-byron-genesis} opt/cardano/config/mainnet-byron-genesis.json
       cp ${mainnet-shelley-genesis} opt/cardano/config/mainnet-shelley-genesis.json
       cp ${mainnet-alonzo-genesis} opt/cardano/config/mainnet-alonzo-genesis.json
+      cp ${mainnet-conway-genesis} opt/cardano/config/mainnet-conway-genesis.json
 
       cp ${testnet-config} opt/cardano/config/testnet-config.json
       cp ${testnet-topology} opt/cardano/config/testnet-topology.json
       cp ${testnet-byron-genesis} opt/cardano/config/testnet-byron-genesis.json
       cp ${testnet-shelley-genesis} opt/cardano/config/testnet-shelley-genesis.json
       cp ${testnet-alonzo-genesis} opt/cardano/config/testnet-alonzo-genesis.json
+      cp ${testnet-conway-genesis} opt/cardano/config/testnet-conway-genesis.json
 
       # gLiveView scripts
       cp -r ${gLiveView}/cnode-helper-scripts cnode-helper-scripts
