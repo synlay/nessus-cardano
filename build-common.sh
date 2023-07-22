@@ -25,11 +25,9 @@ CNCLI_VER="5.2.0"
 
 # Check: https://github.com/input-output-hk/cardano-node/blob/8.1.1/doc/getting-started/install.md
 # Check: https://github.com/input-output-hk/cardano-node/blob/8.1.1/.github/workflows/haskell.yml#L29
-# CABAL_VER="3.8.1.0"
-CABAL_VER="3.10.1.0"
+CABAL_VER="3.8.1.0"
 # Check: https://github.com/input-output-hk/cardano-node/blob/8.1.1/.github/workflows/haskell.yml#L28
-# GHC_VER="8.10.7"
-GHC_VER="9.2.7"
+GHC_VER="8.10.7"
 
 ARCH=`uname -m`
 
