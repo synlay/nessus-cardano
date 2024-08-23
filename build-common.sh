@@ -5,12 +5,12 @@
 # Also check nix/secp256k1/default.nix
 # Also check libsodium + secp256k1 in nix/cardano/Dockerfile
 CARDANO_VER="8.1.1"
-CARDANO_REV="-rev1"
+CARDANO_REV="-rev2"
 
 # Also check nix/cardano/Dockerfile
 # Also check nix/cncli/Dockerfile
 # Also check nix/docker/baseImage
-DEBIAN_VER="12"
+DEBIAN_VER="11"
 # https://github.com/tstack/lnav
 # Also check nix/docker/baseImage/shell.nix
 LNAV_VER="0.11.2"
@@ -25,11 +25,9 @@ CNCLI_VER="5.2.0"
 
 # Check: https://github.com/input-output-hk/cardano-node/blob/8.1.1/doc/getting-started/install.md
 # Check: https://github.com/input-output-hk/cardano-node/blob/8.1.1/.github/workflows/haskell.yml#L29
-# CABAL_VER="3.8.1.0"
-CABAL_VER="3.10.1.0"
+CABAL_VER="3.8.1.0"
 # Check: https://github.com/input-output-hk/cardano-node/blob/8.1.1/.github/workflows/haskell.yml#L28
-# GHC_VER="8.10.7"
-GHC_VER="9.2.7"
+GHC_VER="8.10.7"
 
 ARCH=`uname -m`
 
