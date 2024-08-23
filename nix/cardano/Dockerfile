@@ -19,7 +19,9 @@ RUN apt-get update \
   && apt-get install -y \
     autoconf automake build-essential g++ git jq \
     libffi-dev libgmp-dev libncursesw5 libnuma-dev libssl-dev libsystemd-dev libtinfo-dev libtool llvm \
-    make pkg-config tmux wget zlib1g-dev
+    make pkg-config tmux wget zlib1g-dev \
+    libsodium23 libsodium-dev \
+    libsystemd0 libsystemd-dev
 
 # Install secp256k1
 WORKDIR /src
@@ -37,7 +39,7 @@ RUN ./autogen.sh \
 WORKDIR /src
 RUN git clone https://github.com/input-output-hk/libsodium
 WORKDIR libsodium
-RUN git checkout 66f017f1
+RUN git reset --hard dbb48cce5429cb6585c9034f002568964f1ce567
 RUN ./autogen.sh \
   && ./configure \
   && make install
