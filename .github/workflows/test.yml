@@ -1,0 +1,51 @@
+name: "Test"
+on:
+  pull_request:
+  push:
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    # - name: "Setup haskell"
+    #   uses: haskell/actions/setup@v2
+    #   id: setup-haskell
+    #   with:
+    #     ghc-version: 8.10.7
+    #     cabal-version: 3.6.2.0
+    - uses: cachix/install-nix-action@v17
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+        extra_nix_config: |
+          experimental-features = nix-command flakes
+          allow-import-from-derivation = true
+          substituters = https://cache.nixos.org https://hydra.iohk.io
+          trusted-public-keys = iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo= hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+
+    # - uses: uraimo/run-on-arch-action@v2
+    #   name: Run commands
+    #   id: runcmd
+    #   with:
+    #     arch: aarch64
+    #     distro: ubuntu_latest
+
+    #     # # Not required, but speeds up builds by storing container images in
+    #     # # a GitHub package registry.
+    #     # githubToken: ${{ github.token }}
+
+    #     # Set an output parameter `uname` for use in subsequent steps
+    #     run: |
+    #       uname -a
+    #       echo ::set-output name=uname::$(uname -a)
+    #       ./build.sh cardano-node false
+
+    # - run: nix-env -i haskell.compiler.ghc8107
+    # - run: nix-env -qaP -A nixpkgs.haskellPackages cabal-install
+    # - run: nix-env -i cabal-install-3.6.2.0
+    # - run: nix-shell -p haskell.compiler.ghc8107 cabal-install-3.6.2.0
+    # - run: nix-shell -p haskell.compiler.ghc8107 --quiet --run "./build.sh cardano-node false"
+    - uses: actions/checkout@v3
+    - run: nix-shell
+    - run: ghcup install ghc 8.10.7 && ghcup set ghc 8.10.7
+    - run: ghcup install cabal 3.6.2.0 && ghcup set cabal 3.6.2.0
+    # - run: cabal --version
+    - run: ./build.sh cardano-node false

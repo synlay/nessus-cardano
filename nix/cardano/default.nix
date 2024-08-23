@@ -37,7 +37,7 @@ in
       src = gitSources;
 
       buildInputs = [
-        pkgs.haskell-nix.compiler.ghc8104
+        pkgs.haskell-nix.compiler.ghc8107
         pkgs.cabal-install
         pkgs.cacert
         pkgs.git
