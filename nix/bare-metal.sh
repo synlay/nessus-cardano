@@ -3,9 +3,9 @@
 # https://docs.cardano.org/projects/cardano-node/en/latest/getting-started/install.html
 
 # Some build-arg parameters
-cardanoVersion="1.35.0";
-cabalVersion="3.6.2.0";
-ghcVersion="8.10.7";
+cardanoVersion="8.1.1";
+cabalVersion="3.10.1.0";
+ghcVersion="9.2.7";
 
 ARCH=`uname -m`
 
@@ -35,7 +35,7 @@ if [[ "$LD_LIBRARY_PATH" != *"libsodium"* ]]; then
     mkdir -p $srcLibsod
 
     git clone "https://github.com/input-output-hk/libsodium" $srcLibsod
-    cd $srcLibsod; git checkout 66f017f1
+    cd $srcLibsod; git checkout dbb48cce5429cb6585c9034f002568964f1ce567
 
     ./autogen.sh
     ./configure  --prefix=$outLibsod

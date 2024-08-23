@@ -5,10 +5,10 @@
       "homepage": "https://github.com/nmattia/niv",
       "owner": "nmattia",
       "repo": "niv",
-      "rev": "82e5cd1ad3c387863f0545d7591512e76ab0fc41",
-      "sha256": "1qjavxabbrsh73yck5dcq8jggvh3r2jkbr6b5nlz5d9yrqm9255n",
+      "rev": "ecabfde837ccfb392ccca235f96bfcf4bb8ab186",
+      "sha256": "1aij19grvzbxj0dal49bsnhq1lc23nrglv6p0f00gwznl6109snj",
       "type": "tarball",
-      "url": "https://github.com/nmattia/niv/archive/82e5cd1ad3c387863f0545d7591512e76ab0fc41.tar.gz",
+      "url": "https://github.com/nmattia/niv/archive/ecabfde837ccfb392ccca235f96bfcf4bb8ab186.tar.gz",
       "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "haskellNix": {
@@ -17,11 +17,11 @@
         "homepage": "https://input-output-hk.github.io/haskell.nix",
         "owner": "input-output-hk",
         "repo": "haskell.nix",
-        "_see": "https://github.com/input-output-hk/cardano-node/blob/1.35.3/flake.lock#L3253",
-        "rev": "3fbb17e63c4e052c8289858fa6444d1c66ab6f52",
-        "sha256": "ea8Celj9aPb1HG8mGNorqMr5+3xZzjuhjF89Mj4hSLU=",
+        "_see": "https://github.com/input-output-hk/cardano-node/blob/8.1.1/flake.lock#L493",
+        "rev": "d07c42cdb1cf88d0cab27d3090b00cb3899643c9",
+        "sha256": "BwbWroS1Qm8BiHatG5+iHMHN5U6kqOccewBROUYuMKw=",
         "type": "tarball",
-        "url": "https://github.com/input-output-hk/haskell.nix/archive/3fbb17e63c4e052c8289858fa6444d1c66ab6f52.tar.gz",
+        "url": "https://github.com/input-output-hk/haskell.nix/archive/d07c42cdb1cf88d0cab27d3090b00cb3899643c9.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

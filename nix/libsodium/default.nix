@@ -10,13 +10,13 @@
 pkgs.stdenv.mkDerivation {
 
   pname = "libsodium";
-  version = "1.35.3";
+  version = "8.1.1";
 
-  # Check: https://github.com/input-output-hk/cardano-node/blob/1.35.3/doc/getting-started/install.md#installing-libsodium
+  # Check: https://github.com/input-output-hk/cardano-node/blob/8.1.1/doc/getting-started/install.md#installing-libsodium
   src = builtins.fetchGit {
     url = "https://github.com/input-output-hk/libsodium";
     allRefs = true;
-    rev = "66f017f16633f2060db25e17c170c2afa0f2a8a1";
+    rev = "dbb48cce5429cb6585c9034f002568964f1ce567";
   };
 
   buildInputs = [

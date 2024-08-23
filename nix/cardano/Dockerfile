@@ -10,7 +10,7 @@ ARG ARCH
 
 ## Install dependencies, secp256k1 and libsodium #################################################################################
 
-FROM debian:11-slim as builderA
+FROM debian:11-slim as buildera
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -20,7 +20,9 @@ RUN apt-get update \
   && apt-get install -y \
     autoconf automake build-essential g++ git jq \
     libffi-dev libgmp-dev libncursesw5 libnuma-dev libssl-dev libsystemd-dev libtinfo-dev libtool llvm \
-    make pkg-config tmux wget zlib1g-dev liblmdb-dev
+    make pkg-config tmux wget zlib1g-dev liblmdb-dev \
+    libsodium23 libsodium-dev \
+    libsystemd0 libsystemd-dev
 
 # Install secp256k1
 WORKDIR /src
@@ -38,7 +40,7 @@ RUN ./autogen.sh \
 WORKDIR /src
 RUN git clone https://github.com/input-output-hk/libsodium
 WORKDIR libsodium
-RUN git checkout 66f017f1
+RUN git reset --hard dbb48cce5429cb6585c9034f002568964f1ce567
 RUN ./autogen.sh \
   && ./configure \
   && make install
@@ -48,7 +50,7 @@ ENV PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 
 ## Build + Install GHC & Cabal ########################################################################################
 
-FROM builderA as builderB
+FROM buildera as builderb
 
 ARG CABAL_VER
 ARG GHC_VER
@@ -85,7 +87,7 @@ RUN cabal --version
 
 ## Buid Cardano #######################################################################################################
 
-FROM builderB as builderC
+FROM builderb as builderc
 
 ARG CARDANO_VER
 ARG CABAL_VER
@@ -105,6 +107,10 @@ RUN echo "package cardano-crypto-praos" >> cabal.project.local
 RUN echo "  flags: -external-libsodium-vrf" >> cabal.project.local
 RUN echo "" >> cabal.project.local
 
+RUN echo "package HsOpenSSL" >> cabal.project.local
+RUN echo "  flags: +use-pkg-config" >> cabal.project.local
+RUN echo "" >> cabal.project.local
+
 # Can no longer build cardano-node on arm64
 # https://github.com/input-output-hk/cardano-node/issues/3395
 RUN echo "package trace-dispatcher" >> cabal.project.local
@@ -122,11 +128,11 @@ WORKDIR /root
 
 ## Buid Cardano #######################################################################################################
 
-FROM builderA
+FROM buildera
 
 # Copy the executables from the previous build
-COPY --from=builderC /usr/local/bin/cardano-node /usr/local/bin/
-COPY --from=builderC /usr/local/bin/cardano-cli /usr/local/bin/
-COPY --from=builderC /usr/local/bin/cardano-submit-api /usr/local/bin/
+COPY --from=builderc /usr/local/bin/cardano-node /usr/local/bin/
+COPY --from=builderc /usr/local/bin/cardano-cli /usr/local/bin/
+COPY --from=builderc /usr/local/bin/cardano-submit-api /usr/local/bin/
 
 WORKDIR /
